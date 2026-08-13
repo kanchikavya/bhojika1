@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Fiesta | Users</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+
+    <nav class="bg-orange-600 text-white shadow-lg">
+
+        <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+
+            <h1 class="text-3xl font-bold">
+                🍽 Food Fiesta
+            </h1>
+
+            <a href="../../index.html"
+                class="bg-white text-orange-600 px-5 py-2 rounded-lg font-semibold hover:bg-orange-100">
+                <i class="fas fa-arrow-left"></i>
+                Dashboard
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <div class="max-w-7xl mx-auto p-8">
+
+        <!-- Header -->
+
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+
+            <div>
+
+                <h2 class="text-4xl font-bold text-gray-800">
+                    Users Management
+                </h2>
+
+                <p class="text-gray-500 mt-2">
+                    View and manage all registered customers.
+                </p>
+
+            </div>
+
+            <button
+                class="mt-5 md:mt-0 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg shadow">
+
+                <i class="fas fa-user-plus"></i>
+
+                Add User
+
+            </button>
+
+        </div>
+
+        <!-- Search -->
+
+        <div class="bg-white rounded-xl shadow-lg p-5 mb-8">
+
+            <div class="relative">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by Name, Email or Mobile Number..."
+                    class="w-full border rounded-lg p-4 pl-12 focus:outline-none focus:ring-2 focus:ring-orange-500">
+
+                <i class="fas fa-search absolute left-4 top-5 text-gray-400"></i>
+
+            </div>
+
+        </div>
+
+        <!-- Users Table -->
+
+        <div class="bg-white rounded-xl shadow-lg overflow-x-auto">
+
+            <table class="min-w-full">
+
+                <thead class="bg-orange-500 text-white">
+
+                    <tr>
+
+                        <th class="py-4 px-5">User ID</th>
+
+                        <th class="py-4 px-5">Full Name</th>
+
+                        <th class="py-4 px-5">Address</th>
+
+                        <th class="py-4 px-5">Mobile Number</th>
+
+                        <th class="py-4 px-5">Email</th>
+
+                        <th class="py-4 px-5">Actions</th>
+
+                    </tr>
+
+                </thead>
+<tbody id="userTable" class="text-center">
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4">1</td>
+    <td>Kavya</td>
+    <td>Nalgonda</td>
+    <td>8978811376</td>
+    <td>kavya@gmail.com</td>
+    <td>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded"><i class="fas fa-eye"></i></button>
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1"><i class="fas fa-edit"></i></button>
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded"><i class="fas fa-trash"></i></button>
+    </td> 
+ </tr>  
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4">2</td>
+    <td>Sanjay</td>
+    <td>Warangal</td>
+    <td>8919753387</td>
+    <td>sanjay@gmail.com</td>
+    <td>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded"><i class="fas fa-eye"></i></button>
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1"><i class="fas fa-edit"></i></button>
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded"><i class="fas fa-trash"></i></button>
+    </td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4">3</td>
+    <td>Teja</td>
+    <td>Nalgonda</td>
+    <td>8978823376</td>
+    <td>teja@gmail.com</td>
+    <td>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded"><i class="fas fa-eye"></i></button>
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1"><i class="fas fa-edit"></i></button>
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded"><i class="fas fa-trash"></i></button>
+    </td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4">4</td>
+    <td>Devi</td>
+    <td>Miryalaguda</td>
+    <td>7036339128</td>
+    <td>devi@gmail.com</td>
+    <td>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded"><i class="fas fa-eye"></i></button>
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1"><i class="fas fa-edit"></i></button>
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded"><i class="fas fa-trash"></i></button>
+    </td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4">5</td>
+    <td>Sunny</td>
+    <td>Hyderabad</td>
+    <td>8978811276</td>
+    <td>sunny@gmail.com</td>
+    <td>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded"><i class="fas fa-eye"></i></button>
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1"><i class="fas fa-edit"></i></button>
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded"><i class="fas fa-trash"></i></button>
+    </td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4">6</td>
+    <td>Anu</td>
+    <td>LB Nagar</td>
+    <td>8308811376</td>
+    <td>anu@gmail.com</td>
+    <td>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded"><i class="fas fa-eye"></i></button>
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1"><i class="fas fa-edit"></i></button>
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded"><i class="fas fa-trash"></i></button>
+    </td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4">7</td>
+    <td>Satya</td>
+    <td>Khammam</td>
+    <td>6308811376</td>
+    <td>satya@gmail.com</td>
+    <td>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded"><i class="fas fa-eye"></i></button>
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1"><i class="fas fa-edit"></i></button>
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded"><i class="fas fa-trash"></i></button>
+    </td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4">8</td>
+    <td>Ramya</td>
+    <td>Khammam</td>
+    <td>8978811907</td>
+    <td>ramya@gmail.com</td>
+    <td>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded"><i class="fas fa-eye"></i></button>
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1"><i class="fas fa-edit"></i></button>
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded"><i class="fas fa-trash"></i></button>
+    </td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4">9</td>
+    <td>Sanju</td>
+    <td>Nagar Kurnool</td>
+    <td>8979911376</td>
+    <td>sanju@gmail.com</td>
+    <td>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded"><i class="fas fa-eye"></i></button>
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1"><i class="fas fa-edit"></i></button>
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded"><i class="fas fa-trash"></i></button>
+    </td>
+</tr>
+
+<tr class="hover:bg-orange-50">
+    <td class="py-4">10</td>
+    <td>Harika</td>
+    <td>Kadapa</td>
+    <td>9978811376</td>
+    <td>harika@gmail.com</td>
+    <td>
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded"><i class="fas fa-eye"></i></button>
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1"><i class="fas fa-edit"></i></button>
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded"><i class="fas fa-trash"></i></button>
+    </td>
+</tr>
+
+ </tbody>
+
+                </tbody>
+
+            </table>  
+
+        </div>
+
+        <!-- Pagination  -->
+
+        <div class="flex justify-between items-center mt-8">
+
+            <p class="text-gray-600">
+                Showing 1 to 10 of 10 Users
+            </p>
+
+            <div class="space-x-2">
+
+                <button class="bg-gray-300 px-4 py-2 rounded">
+                    Previous
+                </button>
+
+                <button class="bg-orange-600 text-white px-4 py-2 rounded">
+                    1
+                </button>
+
+                <button class="bg-gray-300 px-4 py-2 rounded">
+                    Next
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="./user.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Food Fiesta | Orders</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+
+    <nav class="bg-orange-600 text-white shadow-lg">
+
+        <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+
+            <h1 class="text-3xl font-bold">
+                🍽 Food Fiesta
+            </h1>
+
+            <a href="../../index.html"
+                class="bg-white text-orange-600 px-5 py-2 rounded-lg font-semibold hover:bg-orange-100">
+
+                <i class="fas fa-arrow-left mr-2"></i>
+
+                Dashboard
+
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Main Container -->
+
+    <div class="max-w-7xl mx-auto p-8">
+
+        <!-- Page Heading -->
+
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+
+            <div>
+
+                <h2 class="text-4xl font-bold text-gray-800">
+
+                    Orders Management
+
+                </h2>
+
+                <p class="text-gray-500 mt-2">
+
+                    View and manage all food orders placed by customers.
+
+                </p>
+
+            </div>
+
+            <button
+                class="mt-5 md:mt-0 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg shadow">
+
+                <i class="fas fa-plus-circle mr-2"></i>
+
+                Add Order
+
+            </button>
+
+        </div>
+
+
+        <!-- Search -->
+
+        <div class="bg-white rounded-xl shadow-lg p-5 mb-8">
+
+            <div class="relative">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by Order ID, Customer ID, Item or Price..."
+                    class="w-full border rounded-lg p-4 pl-12 focus:outline-none focus:ring-2 focus:ring-orange-500">
+
+                <i class="fas fa-search absolute left-4 top-5 text-gray-400"></i>
+
+            </div>
+
+        </div>
+
+
+        <!-- Orders Table -->
+
+        <div class="bg-white rounded-xl shadow-lg overflow-x-auto">
+
+            <table class="min-w-full">
+
+                <thead class="bg-orange-500 text-white">
+
+                    <tr>
+
+                        <th class="py-4 px-5">Order ID</th>
+
+                        <th class="py-4 px-5">User ID</th>
+
+                        <th class="py-4 px-5">Food Item</th>
+
+                        <th class="py-4 px-5">Quantity</th>
+
+                        <th class="py-4 px-5">Price</th>
+
+                        <th class="py-4 px-5">Discount</th>
+
+                        <th class="py-4 px-5">Total Price</th>
+
+                        <th class="py-4 px-5">Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="orderTable" class="text-center">
+                    <tr class="border-b hover:bg-orange-50">
+
+    <td class="py-4">1</td>
+    <td>1</td>
+    <td>Chicken Biryani</td>
+    <td>2</td>
+    <td>₹200.00</td>
+    <td>₹25.00</td>
+    <td class="font-semibold text-green-600">₹175.00</td>
+
+    <td>
+
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-eye"></i>
+        </button>
+
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1">
+            <i class="fas fa-edit"></i>
+        </button>
+
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-trash"></i>
+        </button>
+
+    </td>
+
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+
+    <td class="py-4">2</td>
+    <td>2</td>
+    <td>Egg Biryani</td>
+    <td>3</td>
+    <td>₹180.00</td>
+    <td>₹15.00</td>
+    <td class="font-semibold text-green-600">₹165.00</td>
+
+    <td>
+
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-eye"></i>
+        </button>
+
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1">
+            <i class="fas fa-edit"></i>
+        </button>
+
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-trash"></i>
+        </button>
+
+    </td>
+
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+
+    <td class="py-4">3</td>
+    <td>3</td>
+    <td>Paneer Biryani</td>
+    <td>1</td>
+    <td>₹220.00</td>
+    <td>₹20.00</td>
+    <td class="font-semibold text-green-600">₹200.00</td>
+
+    <td>
+
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-eye"></i>
+        </button>
+
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1">
+            <i class="fas fa-edit"></i>
+        </button>
+
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-trash"></i>
+        </button>
+
+    </td>
+
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+
+    <td class="py-4">4</td>
+    <td>4</td>
+    <td>Veg Biryani</td>
+    <td>2</td>
+    <td>₹150.00</td>
+    <td>₹15.00</td>
+    <td class="font-semibold text-green-600">₹135.00</td>
+
+    <td>
+
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-eye"></i>
+        </button>
+
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1">
+            <i class="fas fa-edit"></i>
+        </button>
+
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-trash"></i>
+        </button>
+
+    </td>
+
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+
+    <td class="py-4">5</td>
+    <td>5</td>
+    <td>Mushroom Biryani</td>
+    <td>2</td>
+    <td>₹190.00</td>
+    <td>₹20.00</td>
+    <td class="font-semibold text-green-600">₹170.00</td>
+
+    <td>
+
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-eye"></i>
+        </button>
+
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1">
+            <i class="fas fa-edit"></i>
+        </button>
+
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-trash"></i>
+        </button>
+
+    </td>
+
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+
+    <td class="py-4">6</td>
+    <td>6</td>
+    <td>Pani Puri</td>
+    <td>2</td>
+    <td>₹60.00</td>
+    <td>₹5.00</td>
+    <td class="font-semibold text-green-600">₹55.00</td>
+
+    <td>
+
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-eye"></i>
+        </button>
+
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1">
+            <i class="fas fa-edit"></i>
+        </button>
+
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-trash"></i>
+        </button>
+
+    </td>
+
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+
+    <td class="py-4">7</td>
+    <td>7</td>
+    <td>Badam Milk</td>
+    <td>4</td>
+    <td>₹350.00</td>
+    <td>₹50.00</td>
+    <td class="font-semibold text-green-600">₹300.00</td>
+
+    <td>
+
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-eye"></i>
+        </button>
+
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1">
+            <i class="fas fa-edit"></i>
+        </button>
+
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-trash"></i>
+        </button>
+
+    </td>
+
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+
+    <td class="py-4">8</td>
+    <td>8</td>
+    <td>Dry Fruits</td>
+    <td>1</td>
+    <td>₹570.00</td>
+    <td>₹70.00</td>
+    <td class="font-semibold text-green-600">₹500.00</td>
+
+    <td>
+
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-eye"></i>
+        </button>
+
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1">
+            <i class="fas fa-edit"></i>
+        </button>
+
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-trash"></i>
+        </button>
+
+    </td>
+
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+
+    <td class="py-4">9</td>
+    <td>9</td>
+    <td>Veg Meals</td>
+    <td>2</td>
+    <td>₹450.00</td>
+    <td>₹50.00</td>
+    <td class="font-semibold text-green-600">₹400.00</td>
+
+    <td>
+
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-eye"></i>
+        </button>
+
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1">
+            <i class="fas fa-edit"></i>
+        </button>
+
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-trash"></i>
+        </button>
+
+    </td>
+
+</tr>
+
+<tr class="hover:bg-orange-50">
+
+    <td class="py-4">10</td>
+    <td>10</td>
+    <td>Fruit Salad</td>
+    <td>3</td>
+    <td>₹530.00</td>
+    <td>₹80.00</td>
+    <td class="font-semibold text-green-600">₹450.00</td>
+
+    <td>
+
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-eye"></i>
+        </button>
+
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1">
+            <i class="fas fa-edit"></i>
+        </button>
+
+        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
+            <i class="fas fa-trash"></i>
+        </button>
+
+    </td>
+
+</tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- Pagination -->
+
+        <div class="flex flex-col md:flex-row justify-between items-center mt-8 gap-4">
+
+            <p class="text-gray-600">
+                Showing 1 to 10 of 10 Orders
+            </p>
+
+            <div class="space-x-2">
+
+                <button
+                    class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded-lg">
+                    Previous
+                </button>
+
+                <button
+                    class="bg-orange-600 text-white px-4 py-2 rounded-lg">
+                    1
+                </button>
+
+                <button
+                    class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded-lg">
+                    Next
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="orders.js"></script>
+
+</body>
+
+</html>

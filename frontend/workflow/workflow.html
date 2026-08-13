@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Food Fiesta | Database Workflow</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body class="bg-gray-100">
+
+
+<!-- Navbar -->
+
+<nav class="bg-orange-600 text-white shadow-lg">
+
+<div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+
+
+<h1 class="text-3xl font-bold">
+
+🍽 Food Fiesta Database Workflow
+
+</h1>
+
+
+<a href="../../index.html"
+class="bg-white text-orange-600 px-5 py-2 rounded-lg font-semibold">
+
+<i class="fas fa-arrow-left"></i>
+
+Dashboard
+
+</a>
+
+
+</div>
+
+</nav>
+
+
+
+<div class="max-w-7xl mx-auto p-8">
+
+
+
+<!-- Introduction -->
+
+<div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+
+
+<h2 class="text-3xl font-bold text-orange-600">
+
+Database Management System Workflow
+
+</h2>
+
+
+<p class="text-gray-600 mt-3">
+
+This workflow explains how Food Fiesta system manages users,
+orders, payments, returns, complaints and reports using SQL concepts.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<!-- Main Flow -->
+
+
+<div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+
+
+<h2 class="text-2xl font-bold mb-6">
+
+Complete Database Flow
+
+</h2>
+
+
+
+<div class="flex flex-col items-center space-y-4 text-center">
+
+
+
+<div class="bg-blue-500 text-white p-4 rounded-lg w-64">
+
+<i class="fas fa-user"></i>
+
+<br>
+
+USER
+
+</div>
+
+
+<i class="fas fa-arrow-down text-2xl"></i>
+
+
+<div class="bg-green-500 text-white p-4 rounded-lg w-64">
+
+user1
+
+<br>
+
+Customer Information
+
+</div>
+
+
+
+<i class="fas fa-arrow-down text-2xl"></i>
+
+
+<div class="bg-yellow-500 text-white p-4 rounded-lg w-64">
+
+orders1
+
+<br>
+
+Food Orders
+
+</div>
+
+
+
+<i class="fas fa-arrow-down text-2xl"></i>
+
+
+<div class="bg-purple-500 text-white p-4 rounded-lg w-64">
+
+payments1
+
+<br>
+
+Payment Processing
+
+</div>
+
+
+
+<i class="fas fa-arrow-down text-2xl"></i>
+
+
+
+<div class="bg-red-500 text-white p-4 rounded-lg w-64">
+
+refund1 / returns1
+
+<br>
+
+Return Management
+
+</div>
+
+
+
+<i class="fas fa-arrow-down text-2xl"></i>
+
+
+<div class="bg-indigo-500 text-white p-4 rounded-lg w-64">
+
+status1 + order_logs
+
+<br>
+
+Tracking System
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- SQL Concepts -->
+
+<div class="grid md:grid-cols-2 gap-6">
+
+
+
+
+
+<!-- Stored Procedures -->
+
+<div class="bg-white shadow-lg rounded-xl p-6">
+
+
+<h3 class="text-xl font-bold text-green-600">
+
+⚙ Stored Procedures
+
+</h3>
+
+
+<p class="mt-3 text-gray-600">
+
+Used to insert data into tables securely.
+
+</p>
+
+
+<pre class="bg-gray-100 p-4 mt-3 rounded">
+
+insert_user()
+
+insert_order()
+
+insert_payment()
+
+insert_refund()
+
+insert_status()
+
+</pre>
+
+
+</div>
+
+
+
+
+
+<!-- Triggers -->
+
+
+<div class="bg-white shadow-lg rounded-xl p-6">
+
+
+<h3 class="text-xl font-bold text-red-600">
+
+⚡ Triggers
+
+</h3>
+
+
+<p class="mt-3 text-gray-600">
+
+Automatic actions performed after database changes.
+
+</p>
+
+
+<ul class="mt-3 list-disc ml-5">
+
+<li>After inserting order → create log</li>
+
+<li>After inserting order → status pending</li>
+
+<li>After return → update status</li>
+
+<li>After refund → update payment status</li>
+
+</ul>
+
+
+</div>
+
+
+
+
+
+
+<!-- Constraints -->
+
+<div class="bg-white shadow-lg rounded-xl p-6">
+
+
+<h3 class="text-xl font-bold text-blue-600">
+
+🔐 Constraints Used
+
+</h3>
+
+
+<ul class="list-disc ml-5 mt-3">
+
+<li>Primary Key</li>
+
+<li>Foreign Key</li>
+
+<li>NOT NULL</li>
+
+<li>UNIQUE</li>
+
+<li>CHECK Constraint</li>
+
+<li>DEFAULT Timestamp</li>
+
+
+</ul>
+
+
+</div>
+
+
+
+
+
+
+<!-- Joins -->
+
+<div class="bg-white shadow-lg rounded-xl p-6">
+
+
+<h3 class="text-xl font-bold text-purple-600">
+
+🔗 Joins Used
+
+</h3>
+
+
+<ul class="list-disc ml-5 mt-3">
+
+
+<li>INNER JOIN</li>
+
+<li>LEFT JOIN</li>
+
+<li>RIGHT JOIN</li>
+
+<li>CROSS JOIN</li>
+
+
+</ul>
+
+
+<p class="mt-3 text-gray-600">
+
+Used to combine user, order, payment and return information.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Aggregate Functions -->
+
+
+<div class="bg-white shadow-lg rounded-xl p-6">
+
+
+<h3 class="text-xl font-bold text-orange-600">
+
+📊 Aggregate Functions
+
+</h3>
+
+
+<ul class="list-disc ml-5 mt-3">
+
+
+<li>COUNT()</li>
+
+<li>SUM()</li>
+
+<li>AVG()</li>
+
+<li>MAX()</li>
+
+<li>MIN()</li>
+
+
+</ul>
+
+
+<p class="mt-3">
+
+Used for dashboard reports.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- Window Functions -->
+
+
+<div class="bg-white shadow-lg rounded-xl p-6">
+
+
+<h3 class="text-xl font-bold text-indigo-600">
+
+📈 Window Functions
+
+</h3>
+
+
+<ul class="list-disc ml-5 mt-3">
+
+
+<li>ROW_NUMBER()</li>
+
+<li>RANK()</li>
+
+<li>DENSE_RANK()</li>
+
+<li>LAG()</li>
+
+<li>LEAD()</li>
+
+<li>Running Total</li>
+
+
+</ul>
+
+
+<p class="mt-3">
+
+Used for customer ranking and sales analysis.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Relationship Table -->
+
+
+<div class="bg-white rounded-xl shadow-lg mt-8 p-6">
+
+
+<h2 class="text-2xl font-bold mb-5">
+
+Table Relationships
+
+</h2>
+
+
+
+<table class="w-full border">
+
+
+<thead class="bg-orange-500 text-white">
+
+
+<tr>
+
+<th class="p-3">
+Parent Table
+</th>
+
+
+<th class="p-3">
+Child Table
+</th>
+
+
+<th class="p-3">
+Relationship
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody class="text-center">
+
+
+<tr class="border">
+
+<td class="p-3">
+user1
+</td>
+
+<td class="p-3">
+orders1
+</td>
+
+<td>
+One User → Many Orders
+</td>
+
+</tr>
+
+
+
+<tr class="border">
+
+<td class="p-3">
+orders1
+</td>
+
+<td class="p-3">
+payments1
+</td>
+
+<td>
+One Order → Payment
+</td>
+
+</tr>
+
+
+
+<tr class="border">
+
+<td class="p-3">
+orders1
+</td>
+
+<td class="p-3">
+returns1
+</td>
+
+<td>
+One Order → Return
+</td>
+
+</tr>
+
+
+
+<tr class="border">
+
+<td class="p-3">
+orders1
+</td>
+
+<td class="p-3">
+status1
+</td>
+
+<td>
+Order Tracking
+</td>
+
+</tr>
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+<script src="./workflow.js"></script>
+
+
+</body>
+
+</html>

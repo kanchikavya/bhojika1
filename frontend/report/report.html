@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Food Fiesta | Reports</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+
+    <nav class="bg-orange-600 text-white shadow-lg">
+
+        <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+
+            <h1 class="text-3xl font-bold">
+                🍽 Food Fiesta
+            </h1>
+
+            <a href="../../index.html"
+                class="bg-white text-orange-600 px-5 py-2 rounded-lg font-semibold hover:bg-orange-100">
+
+                <i class="fas fa-arrow-left"></i>
+
+                Dashboard
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <div class="max-w-7xl mx-auto p-8">
+
+        <!-- Header -->
+
+        <div class="mb-8">
+
+            <h2 class="text-4xl font-bold text-gray-800">
+                Reports Dashboard
+            </h2>
+
+            <p class="text-gray-500 mt-2">
+                View overall business statistics and summary reports.
+            </p>
+
+        </div>
+
+        <!-- Summary Cards -->
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-10">
+
+            <div class="bg-blue-500 text-white rounded-xl shadow-lg p-6">
+
+                <i class="fas fa-users text-4xl"></i>
+
+                <h3 class="text-lg mt-4">
+                    Total Users
+                </h3>
+
+                <p class="text-4xl font-bold mt-2">
+                    10
+                </p>
+
+            </div>
+
+            <div class="bg-green-500 text-white rounded-xl shadow-lg p-6">
+
+                <i class="fas fa-utensils text-4xl"></i>
+
+                <h3 class="text-lg mt-4">
+                    Total Orders
+                </h3>
+
+                <p class="text-4xl font-bold mt-2">
+                    10
+                </p>
+
+            </div>
+
+            <div class="bg-yellow-500 text-white rounded-xl shadow-lg p-6">
+
+                <i class="fas fa-credit-card text-4xl"></i>
+
+                <h3 class="text-lg mt-4">
+                    Payments
+                </h3>
+
+                <p class="text-4xl font-bold mt-2">
+                    10
+                </p>
+
+            </div>
+
+            <div class="bg-red-500 text-white rounded-xl shadow-lg p-6">
+
+                <i class="fas fa-undo text-4xl"></i>
+
+                <h3 class="text-lg mt-4">
+                    Returns
+                </h3>
+
+                <p class="text-4xl font-bold mt-2">
+                    10
+                </p>
+
+            </div>
+
+            <div class="bg-purple-600 text-white rounded-xl shadow-lg p-6">
+
+                <i class="fas fa-indian-rupee-sign text-4xl"></i>
+
+                <h3 class="text-lg mt-4">
+                    Revenue
+                </h3>
+
+                <p class="text-4xl font-bold mt-2">
+                    ₹2550
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Reports Table -->
+
+        <div class="bg-white rounded-xl shadow-lg overflow-x-auto">
+
+            <table class="min-w-full">
+
+                <thead class="bg-orange-500 text-white">
+
+                    <tr>
+
+                        <th class="py-4 px-5">Report</th>
+
+                        <th class="py-4 px-5">Value</th>
+
+                        <th class="py-4 px-5">Description</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="reportTable">
+                    <tr class="border-b hover:bg-orange-50">
+    <td class="py-4 px-5 font-semibold">Total Users</td>
+    <td class="py-4 px-5">10</td>
+    <td class="py-4 px-5">Total registered customers in the system.</td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4 px-5 font-semibold">Total Orders</td>
+    <td class="py-4 px-5">10</td>
+    <td class="py-4 px-5">Total food orders placed by customers.</td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4 px-5 font-semibold">Total Returns</td>
+    <td class="py-4 px-5">10</td>
+    <td class="py-4 px-5">Returned orders recorded in the system.</td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4 px-5 font-semibold">Total Complaints</td>
+    <td class="py-4 px-5">10</td>
+    <td class="py-4 px-5">Customer complaints received.</td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4 px-5 font-semibold">Total Feedback</td>
+    <td class="py-4 px-5">10</td>
+    <td class="py-4 px-5">Feedback submitted by customers.</td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4 px-5 font-semibold">Total Payments</td>
+    <td class="py-4 px-5">10</td>
+    <td class="py-4 px-5">Payments processed for all orders.</td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4 px-5 font-semibold">Total Refunds</td>
+    <td class="py-4 px-5">10</td>
+    <td class="py-4 px-5">Refund requests processed.</td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4 px-5 font-semibold">Total Revenue</td>
+    <td class="py-4 px-5">₹2550.00</td>
+    <td class="py-4 px-5">Revenue generated from all orders.</td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4 px-5 font-semibold">Total Payment Amount</td>
+    <td class="py-4 px-5">₹2550.00</td>
+    <td class="py-4 px-5">Total amount received through payments.</td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4 px-5 font-semibold">Average Order Amount</td>
+    <td class="py-4 px-5">₹255.00</td>
+    <td class="py-4 px-5">Average amount spent per order.</td>
+</tr>
+
+<tr class="border-b hover:bg-orange-50">
+    <td class="py-4 px-5 font-semibold">Highest Order Amount</td>
+    <td class="py-4 px-5">₹500.00</td>
+    <td class="py-4 px-5">Highest valued order placed.</td>
+</tr>
+
+<tr class="hover:bg-orange-50">
+    <td class="py-4 px-5 font-semibold">Lowest Order Amount</td>
+    <td class="py-4 px-5">₹55.00</td>
+    <td class="py-4 px-5">Lowest valued order placed.</td>
+</tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- Bottom Section -->
+
+        <div class="flex flex-col md:flex-row justify-between items-center mt-8 gap-4">
+
+            <p class="text-gray-600">
+                Showing 12 Report Records
+            </p>
+
+            <div class="flex gap-3">
+
+                <button
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg shadow">
+
+                    <i class="fas fa-file-pdf mr-2"></i>
+
+                    Export PDF
+
+                </button>
+
+                <button
+                    class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg shadow">
+
+                    <i class="fas fa-file-excel mr-2"></i>
+
+                    Export Excel
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="report.js"></script>
+
+</body>
+
+</html>
