@@ -6,6 +6,7 @@ __pycache__/
 .env
 venv/
 ENV/
+staticfiles/
 
 # Node / React
 node_modules/

@@ -1,11 +1,14 @@
 services:
   # ----------------------------------------------------
-  # 1. Django REST Framework Backend Service
+  # Unified Full-Stack Service: Django REST API + React 19 SPA
+  # Exactly 1 single URL for everything:
+  # - Frontend UI: https://<your-service>.onrender.com/
+  # - REST API:    https://<your-service>.onrender.com/api/
   # ----------------------------------------------------
   - type: web
-    name: food-fiesta-api
+    name: food-fiesta
     runtime: python
-    buildCommand: "chmod +x backend/build.sh && ./backend/build.sh"
+    buildCommand: "chmod +x build.sh && ./build.sh"
     startCommand: "cd backend && gunicorn food_fiesta_backend.wsgi:application"
     plan: free
     envVars:
@@ -29,23 +32,3 @@ services:
         sync: false
       - key: DB_PORT
         value: "3306"
-
-  # ----------------------------------------------------
-  # 2. React 19 + Bootstrap 5 Frontend Static Site
-  # ----------------------------------------------------
-  - type: web
-    name: food-fiesta-ui
-    runtime: static
-    buildCommand: "cd frontend-react && npm install && npm run build"
-    staticPublishPath: "frontend-react/dist"
-    plan: free
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-    envVars:
-      - key: VITE_API_BASE_URL
-        fromService:
-          type: web
-          name: food-fiesta-api
-          property: url
