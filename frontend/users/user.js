@@ -1,289 +1,153 @@
 // ==========================
-// FOOD FIESTA - USERS.JS
+// FOOD FIESTA - USERS.JS (Connected to Django REST Framework)
 // ==========================
 
-// ---------- SEARCH USER ----------
-// ==========================
-// LOAD USERS FROM DATABASE
-// ==========================
+const API_BASE = "http://localhost:8000/api";
 
 document.addEventListener("DOMContentLoaded", function () {
-
     loadUsers();
-
+    setupSearch();
 });
 
+let allUsers = [];
 
-function loadUsers(){
-
-    fetch("http://localhost:5000/users")
-
-    .then(response => response.json())
-
-    .then(users => {
-
-
-        let tbody = document.getElementById("userTable");
-
-        tbody.innerHTML = "";
-
-
-        users.forEach(user => {
-
-
-            tbody.innerHTML += `
-
-            <tr class="border-b hover:bg-orange-50">
-
-
-            <td class="py-4">${user.user_id}</td>
-
-            <td>${user.name}</td>
-
-            <td>${user.address}</td>
-
-            <td>${user.mobile}</td>
-
-            <td>${user.email}</td>
-
-
-            <td>
-
-
-            <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">
-            <i class="fas fa-eye"></i>
-            </button>
-
-
-            <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1">
-            <i class="fas fa-edit"></i>
-            </button>
-
-
-            <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
-            <i class="fas fa-trash"></i>
-            </button>
-
-
-            </td>
-
-
-            </tr>
-
-            `;
-
-
+function loadUsers() {
+    fetch(`${API_BASE}/users/`)
+        .then(response => {
+            if (!response.ok) throw new Error("Network response was not ok");
+            return response.json();
+        })
+        .then(users => {
+            allUsers = users;
+            renderUserTable(users);
+        })
+        .catch(error => {
+            console.warn("API Connection Error, checking fallback:", error);
+            const tbody = document.getElementById("userTable");
+            if (tbody && tbody.children.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-red-500">Could not connect to Django API on port 8000. Start the backend with 'python manage.py runserver'.</td></tr>`;
+            }
         });
-
-
-    })
-
-    .catch(error=>{
-
-        console.log("Database Error:",error);
-
-    });
-
 }
 
-const searchInput = document.getElementById("searchInput");
+function renderUserTable(users) {
+    const tbody = document.getElementById("userTable");
+    if (!tbody) return;
 
-searchInput.addEventListener("keyup", function () {
+    tbody.innerHTML = "";
 
-    let filter = searchInput.value.toLowerCase();
+    if (users.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-gray-500">No users found.</td></tr>`;
+        return;
+    }
 
-    let rows = document.querySelectorAll("#userTable tr");
+    users.forEach(user => {
+        const id = user.userid || user.user_id;
+        const name = user.f_name || user.name || "Customer";
+        const mobile = user.mobile_no || user.mobile || "—";
+        const email = user.email || "—";
+        const address = user.address || "—";
 
-    rows.forEach(function (row) {
+        tbody.innerHTML += `
+            <tr class="border-b hover:bg-orange-50 transition" id="user-row-${id}">
+                <td class="py-4 px-4 font-mono text-xs text-gray-500">#${id}</td>
+                <td class="font-bold text-gray-800 capitalize">${name}</td>
+                <td class="capitalize text-gray-600">${address}</td>
+                <td class="font-mono text-xs text-gray-600">${mobile}</td>
+                <td class="text-xs text-gray-600">${email}</td>
+                <td class="text-center py-2">
+                    <button onclick="viewUser(${id})" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition" title="View Details">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button onclick="editUser(${id})" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold mx-1 shadow-sm transition" title="Edit">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="deleteUser(${id}, '${name}')" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition" title="Delete">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        `;
+    });
+}
 
-        let text = row.innerText.toLowerCase();
+function setupSearch() {
+    const searchInput = document.getElementById("searchInput");
+    if (!searchInput) return;
 
-        if (text.includes(filter)) {
+    searchInput.addEventListener("input", function () {
+        const filter = this.value.toLowerCase().trim();
+        const filtered = allUsers.filter(u => {
+            const name = (u.f_name || u.name || '').toLowerCase();
+            const email = (u.email || '').toLowerCase();
+            const address = (u.address || '').toLowerCase();
+            const mobile = String(u.mobile_no || u.mobile || '');
+            return name.includes(filter) || email.includes(filter) || address.includes(filter) || mobile.includes(filter);
+        });
+        renderUserTable(filtered);
+    });
+}
 
-            row.style.display = "";
+function viewUser(id) {
+    const user = allUsers.find(u => (u.userid || u.user_id) === id);
+    if (!user) return;
+    alert(
+`Customer Profile #${id}
+----------------------------
+Name: ${user.f_name || user.name}
+Mobile: ${user.mobile_no || user.mobile}
+Email: ${user.email}
+Address: ${user.address}
+Total Orders: ${user.orders_count || 0}
+Total Spent: ₹${user.total_spent || 0}`
+    );
+}
 
+function editUser(id) {
+    const user = allUsers.find(u => (u.userid || u.user_id) === id);
+    if (!user) return;
+
+    const newName = prompt("Edit Customer Name:", user.f_name || user.name);
+    if (!newName) return;
+    const newAddress = prompt("Edit Address:", user.address || "");
+    const newMobile = prompt("Edit Mobile:", user.mobile_no || user.mobile || "");
+
+    fetch(`${API_BASE}/users/${id}/`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            f_name: newName,
+            address: newAddress,
+            mobile_no: Number(newMobile) || user.mobile_no,
+            email: user.email,
+        }),
+    })
+    .then(r => {
+        if (!r.ok) throw new Error("Update failed");
+        return r.json();
+    })
+    .then(updated => {
+        alert("Customer updated successfully!");
+        loadUsers();
+    })
+    .catch(err => alert("Error updating user. Check backend status."));
+}
+
+function deleteUser(id, name) {
+    if (!confirm(`Are you sure you want to delete customer '${name}'?`)) return;
+
+    fetch(`${API_BASE}/users/${id}/`, {
+        method: "DELETE",
+    })
+    .then(r => {
+        if (r.status === 204 || r.ok) {
+            alert(`User #${id} removed successfully.`);
+            loadUsers();
         } else {
-
-            row.style.display = "none";
-
+            throw new Error("Delete failed");
         }
-
+    })
+    .catch(err => {
+        alert("Cannot delete user linked to orders in MySQL database.");
     });
-
-});
-
-
-// ---------- VIEW USER ----------
-
-const viewButtons = document.querySelectorAll(".bg-blue-500");
-
-viewButtons.forEach(function (button) {
-
-    button.addEventListener("click", function () {
-
-        let row = this.closest("tr");
-
-        let data = row.querySelectorAll("td");
-
-        alert(
-`User Details
-
-User ID : ${data[0].innerText}
-
-Name : ${data[1].innerText}
-
-Address : ${data[2].innerText}
-
-Mobile : ${data[3].innerText}
-
-Email : ${data[4].innerText}`
-        );
-
-    });
-
-});
-
-
-// ---------- EDIT USER ----------
-
-const editButtons = document.querySelectorAll(".bg-yellow-500");
-
-editButtons.forEach(function (button) {
-
-    button.addEventListener("click", function () {
-
-        let row = this.closest("tr");
-
-        let name = row.cells[1].innerText;
-
-        let address = row.cells[2].innerText;
-
-        let mobile = row.cells[3].innerText;
-
-        let email = row.cells[4].innerText;
-
-        let newName = prompt("Edit Name", name);
-
-        if (newName == null) return;
-
-        let newAddress = prompt("Edit Address", address);
-
-        if (newAddress == null) return;
-
-        let newMobile = prompt("Edit Mobile", mobile);
-
-        if (newMobile == null) return;
-
-        let newEmail = prompt("Edit Email", email);
-
-        if (newEmail == null) return;
-
-        row.cells[1].innerText = newName;
-        row.cells[2].innerText = newAddress;
-        row.cells[3].innerText = newMobile;
-        row.cells[4].innerText = newEmail;
-
-        alert("User Updated Successfully");
-
-    });
-
-});
-
-
-// ---------- DELETE USER ----------
-
-const deleteButtons = document.querySelectorAll(".bg-red-500");
-
-deleteButtons.forEach(function (button) {
-
-    button.addEventListener("click", function () {
-
-        let row = this.closest("tr");
-
-        let name = row.cells[1].innerText;
-
-        let confirmDelete = confirm("Delete " + name + "?");
-
-        if (confirmDelete) {
-
-            row.remove();
-
-            alert("User Deleted Successfully");
-
-        }
-
-    });
-
-});
-
-
-// ---------- ADD USER ----------
-
-const addButton = document.querySelector(".bg-green-600");
-
-addButton.addEventListener("click", function () {
-
-    let id = document.querySelectorAll("#userTable tr").length + 1;
-
-    let name = prompt("Enter Name");
-
-    if (!name) return;
-
-    let address = prompt("Enter Address");
-
-    if (!address) return;
-
-    let mobile = prompt("Enter Mobile Number");
-
-    if (!mobile) return;
-
-    let email = prompt("Enter Email");
-
-    if (!email) return;
-
-    let tbody = document.getElementById("userTable");
-
-    tbody.innerHTML += `
-
-<tr class="border-b hover:bg-orange-50">
-
-<td class="py-4">${id}</td>
-
-<td>${name}</td>
-
-<td>${address}</td>
-
-<td>${mobile}</td>
-
-<td>${email}</td>
-
-<td>
-
-<button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">
-<i class="fas fa-eye"></i>
-</button>
-
-<button class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded mx-1">
-<i class="fas fa-edit"></i>
-</button>
-
-<button class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
-<i class="fas fa-trash"></i>
-</button>
-
-</td>
-
-</tr>
-
-`;
-
-    alert("User Added Successfully");
-
-    location.reload();
-
-});
-
-
-// ---------- PAGE LOADED ----------
-
-console.log("Food Fiesta Users Page Loaded Successfully");
+}
