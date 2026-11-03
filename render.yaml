@@ -1,0 +1,51 @@
+services:
+  # ----------------------------------------------------
+  # 1. Django REST Framework Backend Service
+  # ----------------------------------------------------
+  - type: web
+    name: food-fiesta-api
+    runtime: python
+    buildCommand: "chmod +x backend/build.sh && ./backend/build.sh"
+    startCommand: "cd backend && gunicorn food_fiesta_backend.wsgi:application"
+    plan: free
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: DEBUG
+        value: "True"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: "*"
+      - key: CORS_ALLOW_ALL_ORIGINS
+        value: "True"
+      - key: DB_NAME
+        value: food_fiesta
+      - key: DB_USER
+        value: root
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: "3306"
+
+  # ----------------------------------------------------
+  # 2. React 19 + Bootstrap 5 Frontend Static Site
+  # ----------------------------------------------------
+  - type: web
+    name: food-fiesta-ui
+    runtime: static
+    buildCommand: "cd frontend-react && npm install && npm run build"
+    staticPublishPath: "frontend-react/dist"
+    plan: free
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_BASE_URL
+        fromService:
+          type: web
+          name: food-fiesta-api
+          property: url
