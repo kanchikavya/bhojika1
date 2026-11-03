@@ -61,20 +61,52 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'food_fiesta_backend.wsgi.application'
 
-# Database configuration: MySQL (food_fiesta activated)
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME', 'food_fiesta'),
-        'USER': os.environ.get('DB_USER', 'root'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'Kavya@123google'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
-        'PORT': os.environ.get('DB_PORT', '3306'),
-        'OPTIONS': {
-            'charset': 'utf8mb4',
+# Database configuration: Primary MySQL with auto-fallback to pre-seeded SQLite for cloud deployments
+DB_HOST = os.environ.get('DB_HOST', 'localhost')
+DB_USER = os.environ.get('DB_USER', 'root')
+DB_PASSWORD = os.environ.get('DB_PASSWORD', 'Kavya@123google')
+DB_NAME = os.environ.get('DB_NAME', 'food_fiesta')
+DB_PORT = int(os.environ.get('DB_PORT', 3306))
+
+use_mysql = False
+# If cloud MySQL host is provided or we can reach the local MySQL server
+try:
+    _conn = pymysql.connect(
+        host=DB_HOST,
+        user=DB_USER,
+        password=DB_PASSWORD,
+        database=DB_NAME,
+        port=DB_PORT,
+        connect_timeout=2
+    )
+    _conn.close()
+    use_mysql = True
+    print(f"[Food Fiesta DB] Successfully connected to MySQL ({DB_HOST}:{DB_PORT}/{DB_NAME})")
+except Exception as _e:
+    print(f"[Food Fiesta DB] MySQL not reachable ({_e}). Using pre-seeded Food Fiesta SQLite database.")
+
+if use_mysql:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': DB_NAME,
+            'USER': DB_USER,
+            'PASSWORD': DB_PASSWORD,
+            'HOST': DB_HOST,
+            'PORT': str(DB_PORT),
+            'OPTIONS': {
+                'charset': 'utf8mb4',
+            }
         }
     }
-}
+else:
+    SQLITE_PATH = BASE_DIR / 'food_fiesta.sqlite3'
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': SQLITE_PATH,
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
